@@ -1,0 +1,145 @@
+************************************************************************W.D. HTML***********************************************************************************
+
+•  Are the HTML tags and elements the same thing?
+Ans:- The HTML tags and elements are not same thing, 
+HTML Tags starting and ending point parts of an HTML document are HTML Tags, which start with < (less than) and end with >(greater than) angle bracket,
+ and whatever is written inside the angle brackets are known as tags.
+
+• What are tags and attributes in HTML?
+Ans:-  HTML Tags:
+HTML Tags are the starting and ending parts of an HTML element. They begin with < symbol and end with > symbol. Whatever is written inside < and > are called tags.
+Example: 
+In this example <b> is the starting tag and </b> is the ending tag.
+HTML Attributes:
+HTML Attributes is used to define the character of an HTML element. It always placed in the opening tag of an element. It generally provides additional styling (attribute) to the element.
+Example:  
+In this example <p> is the starting tag and </p> is the ending tag with extra css attributes.
+
+• What are void elements in HTML?
+Ans:- Most of the HTML elements are surrounded by start and end tags to specify the starting and end of the element.
+There is a special group of elements that only have start tags and does not contain any content within it, these elements are called void elements. 
+Void elements doesn’t have ending tags and can only have attributes but do not contain any kind of content. 
+These elements can have backslash before ending of start tag but that is completely optional.
+ Example of such elements are <br>, <hr>, <img>, <input>, <link>, <base>, <meta>, <param>, <area>, <embed>, <col>, <track>, <source> etc.
+
+• What are HTML Entities?
+Ans:- HTML entities are the reserved characters that have special meaning when used in an HTML document. Each of these codes starts with an ampersand and ends with a semicolon.
+
+• What are different types of lists in HTML?
+Ans:- HTML lists come in three main categories: unordered lists, ordered lists, and definition lists.
+To create an unordered list, you can use the <ul> (unordered list) element and nest individual list items within <li> (list item) elements:
+<ul>
+  <li>Item 1</li>
+  <li>Item 2</li>
+  <li>Item 3</li>
+</ul>
+To create an ordered list, use the <ol> (ordered list) element and nest list items within <li> elements:
+<ol>
+  <li>First item</li>
+  <li>Second item</li>
+  <li>Third item</li>
+</ol>
+Definition lists are designed to present terms and their corresponding definitions. They consist of a list of terms enclosed in <dt> (definition term) elements and their associated definitions enclosed in <dd> (definition description) elements.
+<dl>
+<dt> HTML</dt>
+<dd> this is html </dd>
+</dl>
+
+• What is the ‘class’ attribute in HTML?
+Ans:- The class attribute specifies one or more classnames for an element.
+The class attribute is mostly used to point to a class in a style sheet. However, it can also be used by a JavaScript (via the HTML DOM) to make changes to HTML elements with a specified class.
+
+• What is the difference between the ‘id’ attribute and the ‘class’ attribute of HTML elements?
+Ans:- A class name can be used by multiple HTML elements, while an id name must only be used by one HTML element within the page.
+
+• What are the various formatting tags in HTML?
+Ans:- Formatting elements were designed to display special types of text:
+<b> - Bold text
+<strong> - Important text
+<i> - Italic text
+<em> - Emphasized text
+<mark> - Marked text
+<small> - Smaller text
+<del> - Deleted text
+<ins> - Inserted text
+<sub> - Subscript text
+<sup> - Superscript text
+
+• How is Cell Padding different from Cell Spacing?
+Ans:- Cell padding is used to create a border around the content area of a web page, whereas cell spacing is used for positioning elements (such as images or text) within that content area.
+
+• How can we club two or more rows or columns into a single row or column in an HTML table?
+Ans:- We can merge two or more table cells in a column using the colspan attribute in a <td> HTML tag (table data). To merge two or more row cells, use the rowspan attribute.
+
+• What is the difference between a block-level element and an inline element?
+Ans:- Block elements always start from a new line. Inline elements never start from a new line.
+
+• How to create a Hyperlink in HTML?
+Ans:- The <a> tag defines a hyperlink, which is used to link from one page to another.
+The most important attribute of the <a> element is the href attribute, which indicates the link's destination.
+
+• What is the use of an iframe tag?
+Ans:- The iframe tag in HTML stands for Inline Frame and is used to embed another HTML document within the current document. It supports various attributes for specifying dimensions, borders, scrolling, and more to customize the appearance and behavior of the embedded content.
+It requires an src attribute specifying the URL of the document to be embedded. Also enables the inclusion of videos, maps, or entire web pages from other sources.
+
+
+• What is the use of a span tag? Explain with example?
+Ans:- The <span> tag is an inline container used to mark up a part of a text, or a part of a document.
+example:-> <p>My mother has <span style="color:blue">blue</span> eyes.</p>
+
+• How to insert a picture into a background image of a web page?
+Ans:- to add background image in HTML using background attrubute, perform the following steps:
+
+Open the HTML file in text editor.
+Within the starting <body> tag in your Html file, type <Body background=” “>
+Give the path of the image we want to add. (Example, <Body background=”C:Usersanshuman.singhDownloadsinfoedge.jpg “>
+Save the Html file in the text editor and run the file
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body background="C:\Users\avhin\Downloads\9386541.jpg">
+    
+</body>
+</html>
+
+
+• How are active links different from normal links?
+Ans:- Active links are hyperlinks that are currently being interacted with by the user. This can happen when the user hovers over the link with their mouse cursor, clicks on it, or right-clicks on it. Normal links are hyperlinks that have not yet been interacted with.
+
+
+• What are the different tags to separate sections of text?
+Ans:- We separate a section of texts in HTML using the below tags:
+<br> tag – It is used to separate the line of text. It breaks the current line and shifts the flow of the text to a new line.
+<p> tag–This tag is used to write a paragraph of text.
+<blockquote> tag–This tag is used to define large quoted sections.
+
+
+• What is SVG?
+Ans:- HTML SVG is used to describe the vector or raster graphics. SVG images and their behaviors are defined in XML text files. 
+We mostly use it for vector type diagrams like pie charts, 2-Dimensional graphs in an X, Y coordinate system.
+<svg width="100" height="100">
+  <circle cx="50" cy="50" r="40" stroke="yellow" stroke-width="4" fill="red" />
+</svg>
+
+
+• What is difference between HTML and XHTML?
+Ans:- HTML and XHTML are both markup languages used to create web pages. However, XHTML is stricter than HTML and requires developers to write well-formed code that adheres to specific rules and guidelines. XHTML also requires all tags to be closed and all attributes to be quoted.
+
+• What are logical and physical tags in HTML?
+Ans:- Physical tag: These tags are used to provide the visual appearance to the text.
+Logical tag: These tags are used to add some logical or semantic value to the text.
+
+
+
+
+
+
+
+
+
+
+
