@@ -1,0 +1,130 @@
+***********************************************************************Module (CSS and CSS 3) -2***********************************************************************
+_______________________________________________________________________________________________________________________________________________________________________
+1. What are the benefits of using CSS?
+Ans:-
+. Consistency and Global Styling
+. Easier to Maintain and Efficient Updates
+. Time-Saving and Faster Loading Times
+. Enhanced Design Options and Responsive Design
+. SEO-Friendly
+. Accessibility and Print-Friendly Pages
+. Platform Independence and Device Compatibility
+. CSS Minification and Page Load Efficiency
+. Cascade, Inheritance, and Class/ID Usage
+. CSS Sprites, Animations, and Effects
+
+2. What are the disadvantages of CSS?
+Ans:- 
+. Cross-Browser Issues and Browser Compatibility
+. Learning Curve
+. Security Concerns
+. Complex Layouts and Limited Layout Control
+. File Size and Performance Impact
+. Over-Specificity and Overriding Styles
+. Maintenance Challenges
+
+3. What is the difference between CSS2 and CSS3?
+Ans:- 
+CSS3 is split into many various documents known as Modules. each module adds new capability or extends options outlined in CSS2 over conserving backward compatibility. Work on CSS3 started around the time of publication of the initial CSS2 recommendation.
+The CSS3 version supports more browsers than CSS2.
+CSS3 introduces several new selectors. Those new selectors square measure largely in an exceeding type of pseudo-elements and pseudo-categories.
+The new addition of General relation Combinator will be wont to match relation parts of a given part through diacritic (~) combinator.
+CSS3 introduces several properties attended with new values and units. It facilitates styling of backgrounds, borders, boxes, etc , that permits the USA to stay most of the styling at intervals the computer network and HTML standards and our document, while not a necessity for all those proprietary third-party package packages.
+New values and new units square measure introduced to support all those new properties. for example, Angle units deg, grad, rad, and switch or Time units s and ms.
+
+4. Name a few CSS style components
+Ans:-
+A CSS style typically consists of a selector and a declaration block. The selector identifies the HTML element to be styled, and the declaration block contains one or more declarations separated by semicolons. Each declaration includes a property and a value, which specify the aspect of the element to be styled, such as color, font size, or margin. 
+For example:-
+h1 { 
+  color: blue; 
+  font-size: 24px; 
+} 
+
+5. What do you understand by CSS opacity?
+Ans:-
+The CSS opacity property is used to specify the transparency of an element. In simple word, we can say that it specifies the clarity of the image.
+
+6. How can the background color of an element be changed?
+Ans:- 
+To add background color in HTML, use the CSS background-color property. Set it to the color name or code you want and place it inside a style attribute. Then add this style attribute to an HTML element, like a table, heading, div, or span tag.
+
+7. How can image repetition of the backup be controlled?
+Ans:- 
+The background-repeat property in CSS is used to repeat the background image both horizontally and vertically. It also decides whether the background image will be repeated or not.
+
+
+8. What is the use of the background-position property?
+Ans:- 
+The background property is used to set the background color, image, position, and other properties of an element.
+
+9. Which property controls the image scroll in the background?
+Ans:-
+The background-attachment property sets whether a background image scrolls with the rest of the page, or is fixed.
+
+10. Why should background and color be used as separate properties?
+Ans:-
+There are two reasons behind this:
+It enhances the legibility of style sheets. The background property is a complex property in CSS, and if it is combined with color, the complexity will further increase.
+Color is an inherited property while the background is not. So this can make confusion further.
+
+11. How to center block elements using CSS1?
+Ans:-
+To horizontally center a block element (like <div>), use margin: auto;
+Setting the width of the element will prevent it from stretching out to the edges of its container.
+
+12. How to maintain the CSS specifications?
+Ans:- 
+The CSS specifications are maintained by the World Wide Web Consortium (W3C). Even though every browser supports CSS, there are many inconsistencies in the supported specification version. Some browsers even have their own implementation of the specification and have proprietary (vendor) prefixes.
+
+13. What are the ways to integrate CSS as a web page?
+Ans:-
+CSS may be added to HTML in three different ways. To style a single HTML element on the page, use Inline CSS in a style attribute. By adding CSS to the head section of our HTML document, we can embed an internal stylesheet. We can also connect to an external stylesheet that separates our CSS from our HTML.
+
+14. What is embedded style sheets?
+Ans:-
+An embedded style sheet is declared within the <head> element of an XHTML document. It applies to the whole document, rather than just one element. Each style declaration (or CSS rule) gets applied to everything in the document that matches that rule.
+
+15. What are the external style sheets?
+Ans:- 
+An external style sheet is a separate CSS file that can be accessed by creating a link within the head section of the webpage. Multiple webpages can use the same link to access the stylesheet.
+The link to an external style sheet is placed within the head section of the page.
+
+16. What are the advantages and disadvantages of using external style sheets?
+Ans:-
+There are several advantages to using an external style sheet rather than an internal one:
+Separation of content and presentation: An external style sheet allows you to separate the content of your website (HTML) from the presentation (CSS). This makes it easier to maintain and update your website, as you only need to change the style sheet rather than making changes to the HTML of each individual page.
+Reusable styles: An external style sheet can be reused across multiple pages and websites, saving time and making it easier to maintain a consistent look and feel.
+Improved performance: An external style sheet is only loaded once, even if it is used on multiple pages. This can improve the performance of your website, as the browser does not need to download the same styles repeatedly.
+There are also some disadvantages to using an external style sheet:
+Additional HTTP request: An external style sheet requires an additional HTTP request to load, which can slightly increase the time it takes for the page to render.
+Limited control: With an external style sheet, you have less control over the specific elements on a page, as the styles are applied globally to all elements that use the same class or ID.
+Harder to override: It can be harder to override the styles in an external style sheet, as they are applied globally. To override a style, you need to use more specific selectors or use the !important declaration, which can make your style sheet more complex and difficult to maintain.
+
+17. What is the meaning of the CSS selector?
+Ans:-
+A CSS selector is the first part of a CSS Rule. It is a pattern of elements and other terms that tell the browser which HTML elements should be selected to have the CSS property values inside the rule applied to them.
+
+18. What are the media types allowed by CSS?
+Ans:-
+The @media rule, introduced in CSS2, made it possible to define different style rules for different media types.
+Media queries in CSS3 extended the CSS2 media types idea: Instead of looking for a type of device, they look at the capability of the device.
+Media queries can be used to check many things, such as:
+width and height of the viewport
+orientation of the viewport (landscape or portrait) resolution
+Using media queries are a popular technique for delivering a tailored style sheet to desktops, laptops, tablets, and mobile phones (such as iPhone and Android phones).
+
+19. What is the rule set?
+Ans:-
+Each (valid) declaration block is preceded by one or more comma-separated selectors, which are conditions selecting some elements of the page. A selector list and an associated declarations block, together, are called a ruleset, or often a rule.
+
+
+
+
+
+
+
+
+
+
+
