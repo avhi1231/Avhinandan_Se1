@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script> 
+        var DAYS_IN_WEEK = 7; 
+        function find(nd) 
+        { 
+            var year, week, days; 
+            year = parseInt(nd / 365); 
+            week = parseInt((nd % 365) / DAYS_IN_WEEK); 
+            days = (nd % 365) % DAYS_IN_WEEK;     
+            document.write("years = " + year + "<br/>"); 
+            document.write("weeks = " + week + "<br/>"); 
+            document.write("days = " + days + "<br/>"); 
+        } 
+            var nd = 2024; 
+            find(nd);     
+    </script>     
+</html>

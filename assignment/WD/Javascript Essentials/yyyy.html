@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    function getCurrentDate() {
+    let dateObj = new Date();
+    let month = String(dateObj.getMonth() + 1).padStart(2, '0');
+    let day = String(dateObj.getDate()).padStart(2, '0');
+    let year = dateObj.getFullYear();
+
+    let format1 = `${month}-${day}-${year}`;
+    let format2 = `${month}/${day}/${year}`;
+    let format3 = `${day}-${month}-${year}`;
+    let format4 = `${day}/${month}/${year}`;
+
+    return {
+        "mm-dd-yyyy": format1,
+        "mm/dd/yyyy": format2,
+        "dd-mm-yyyy": format3,
+        "dd/mm/yyyy": format4
+    };
+}
+
+let currentDate = getCurrentDate();
+console.log("mm-dd-yyyy:", currentDate["mm-dd-yyyy"]);
+console.log("mm/dd/yyyy:", currentDate["mm/dd/yyyy"]);
+console.log("dd-mm-yyyy:", currentDate["dd-mm-yyyy"]);
+console.log("dd/mm/yyyy:", currentDate["dd/mm/yyyy"]);
+
+</script>
+</html>
