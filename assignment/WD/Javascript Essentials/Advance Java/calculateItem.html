@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    body {
+  text-align: left;
+  font-family: Sans-serif;
+}
+table {
+  margin: 0 auto;
+}
+td, th {
+  margin: .5em 0;
+  font-size: 1.5em;
+}
+input {
+  height: 30px;
+  font-size: .8em;
+  padding: .5em;
+}
+
+</style>
+<body>
+    <table id="order-entry">
+        <thead>
+            <tr>
+                <th>Quantity</th>
+                <th>Price</th>
+                <th>Sum</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><input class="form-calc form-qty" value="1"></td>
+                <td><input class="form-calc form-cost" value="10.00"></td>
+                <td><input class="form-line" value="0" readonly></td>
+            </tr>
+            <tr>
+                <td><input class="form-calc form-qty" value="2"></td>
+                <td><input class="form-calc form-cost" value="5.33"></td>
+                <td><input class="form-line" value="0" readonly onchange="this.value=addCommas(this.value);"></td>
+            </tr>
+            <tr>
+                <td colspan="1">Total: </td>
+                <td id="total"></td>
+            </tr>
+        </tbody>
+    </table>  
+</body>
+<script>
+    $(document).ready(function() {
+    $("#order-entry").on("keyup", ".form-calc", function() {
+        var parent = $(this).closest("tr");
+        parent.find(".form-line").val((parent.find(".form-qty").val() * parent.find(".form-cost").val()).toFixed(2));
+        var total = 0;
+        $(".form-line").each(function(){
+            total += parseFloat($(this).val()||0);
+        });
+        $("#total").text(total.toFixed(2));
+    });
+});
+
+function addCommas(n){
+    var s=n.split('.')[1];
+    (s) ? s="."+s : s="";
+    n=n.split('.')[0]
+    while(n.length>3){
+        s=","+n.substr(n.length-3,3)+s;
+        n=n.substr(0,n.length-3)
+    }
+    return n+s
+}
+</script>
+</html>

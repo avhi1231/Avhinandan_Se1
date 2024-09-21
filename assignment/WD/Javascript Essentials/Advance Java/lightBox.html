@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsive Lightbox Gallery</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+        .gallery {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+        }
+        .gallery img {
+            width: 200px;
+            height: auto;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: transform 0.3s;
+        }
+        .gallery img:hover {
+            transform: scale(1.05);
+        }
+        /* Lightbox CSS */
+        .lightbox {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+        }
+        .lightbox.active {
+            display: flex;
+        }
+        .lightbox-content {
+            position: relative;
+            max-width: 90%;
+            max-height: 90%;
+        }
+        .lightbox-content img {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+        }
+        .close, .prev, .next {
+            position: absolute;
+            top: 50%;
+            font-size: 30px;
+            color: white;
+            cursor: pointer;
+            user-select: none;
+            padding: 10px;
+            background: rgba(0, 0, 0, 0.5);
+            border-radius: 50%;
+        }
+        .close {
+            top: 20px;
+            right: 20px;
+            font-size: 40px;
+        }
+        .prev {
+            left: 10px;
+            transform: translateY(-50%);
+        }
+        .next {
+            right: 10px;
+            transform: translateY(-50%);
+        }
+    </style>
+</head>
+<body>
+
+<h1>Responsive Lightbox Gallery</h1>
+
+<div class="gallery">
+    <img src="https://via.placeholder.com/600x400?text=Image+1" alt="Image 1">
+    <img src="https://via.placeholder.com/600x400?text=Image+2" alt="Image 2">
+    <img src="https://via.placeholder.com/600x400?text=Image+3" alt="Image 3">
+    <img src="https://via.placeholder.com/600x400?text=Image+4" alt="Image 4">
+    <img src="https://via.placeholder.com/600x400?text=Image+5" alt="Image 5">
+</div>
+
+<div id="lightbox" class="lightbox">
+    <span class="close">&times;</span>
+    <span class="prev">&#10094;</span>
+    <div class="lightbox-content">
+        <img src="" alt="Lightbox Image">
+    </div>
+    <span class="next">&#10095;</span>
+</div>
+
+<script>
+    // Get all gallery images
+    const galleryImages = document.querySelectorAll('.gallery img');
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImage = document.querySelector('.lightbox-content img');
+    const closeBtn = document.querySelector('.close');
+    const prevBtn = document.querySelector('.prev');
+    const nextBtn = document.querySelector('.next');
+
+    let currentImageIndex = 0;
+
+    // Open lightbox when clicking on an image
+    galleryImages.forEach((img, index) => {
+        img.addEventListener('click', () => {
+            currentImageIndex = index;
+            openLightbox();
+        });
+    });
+
+    // Function to open lightbox
+    function openLightbox() {
+        lightbox.classList.add('active');
+        showImage(currentImageIndex);
+    }
+
+    // Function to close lightbox
+    closeBtn.addEventListener('click', () => {
+        lightbox.classList.remove('active');
+    });
+
+    // Show image based on index
+    function showImage(index) {
+        lightboxImage.src = galleryImages[index].src;
+    }
+
+    // Navigate to previous image
+    prevBtn.addEventListener('click', () => {
+        currentImageIndex = (currentImageIndex === 0) ? galleryImages.length - 1 : currentImageIndex - 1;
+        showImage(currentImageIndex);
+    });
+
+    // Navigate to next image
+    nextBtn.addEventListener('click', () => {
+        currentImageIndex = (currentImageIndex === galleryImages.length - 1) ? 0 : currentImageIndex + 1;
+        showImage(currentImageIndex);
+    });
+
+    // Close lightbox if clicking outside the image
+    lightbox.addEventListener('click', (e) => {
+        if (e.target === lightbox) {
+            lightbox.classList.remove('active');
+        }
+    });
+</script>
+
+</body>
+</html>

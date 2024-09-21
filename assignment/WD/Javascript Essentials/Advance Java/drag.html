@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Interactive Lighting with Drag and Drop</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+<style>
+  #darkArea {
+    width: 300px;
+    height: 300px;
+    background-color: #333;
+    position: relative;
+    margin-top: 20px;
+  }
+  #lightIcon {
+    font-size: 48px;
+    color: #ccc;
+    cursor: pointer;
+    position: absolute;
+  }
+</style>
+</head>
+<body>
+<div id="main">
+  <div id="darkArea"></div>
+  <i id="lightIcon" class="fas fa-lightbulb"></i>
+</div>
+
+<script>
+  // Get references to the light bulb icon and the dark area on the webpage
+  var lightIcon = document.getElementById("lightIcon");
+  var darkArea = document.getElementById("darkArea");
+
+  // Variables to track whether the dragging is active and to store position data
+  var active = false;
+  var initialX, initialY, currentX, currentY, xOffset = 0, yOffset = 0;
+
+  // Listen for the mouse down event on the light bulb icon
+  lightIcon.addEventListener("mousedown", function(e) {
+    // Record the starting position of the mouse and adjust by any existing offset
+    initialX = e.clientX - xOffset;
+    initialY = e.clientY - yOffset;
+    // Set the active flag to true, indicating that dragging has started
+    active = true;
+  });
+
+  // Listen for mouse movement across the entire document
+  document.addEventListener("mousemove", function(e) {
+    // If not dragging, don't do anything
+    if (!active) return;
+    // Prevent any other actions that may occur as a result of this movement
+    e.preventDefault();
+    // Calculate the new position of the mouse
+    currentX = e.clientX - initialX;
+    currentY = e.clientY - initialY;
+    // Update the offset with the new position
+    xOffset = currentX;
+    yOffset = currentY;
+    // Move the light bulb icon to the new position
+    lightIcon.style.transform = "translate3d(" + currentX + "px, " + currentY + "px, 0)";
+  });
+
+  // Listen for the mouse up event across the entire document
+  document.addEventListener("mouseup", function() {
+    // Save the final position of the light bulb
+    initialX = currentX;
+    initialY = currentY;
+    // Set the active flag to false, indicating dragging has ended
+    active = false;
+    // Check if the light bulb is inside the dark area
+    if (isInside(darkArea, lightIcon)) {
+      // Change the background color of the dark area to yellow
+      darkArea.style.backgroundColor = "yellow";
+      // Change the color of the light bulb to yellow
+      lightIcon.style.color = "yellow";
+    } else {
+      // Revert the dark area's color to dark
+      darkArea.style.backgroundColor = "#333";
+      // Revert the light bulb's color to gray
+      lightIcon.style.color = "#ccc";
+    }
+  });
+
+  // Function to check if the light bulb is inside the dark area
+  function isInside(container, element) {
+    // Get the position of the container and the element
+    var containerRect = container.getBoundingClientRect();
+    var elementRect = element.getBoundingClientRect();
+    // Return true if the element is within the container's boundaries
+    return (
+      elementRect.left >= containerRect.left &&
+      elementRect.right <= containerRect.right &&
+      elementRect.top >= containerRect.top &&
+      elementRect.bottom <= containerRect.bottom
+    );
+  }
+</script>
+</body>
+</html>

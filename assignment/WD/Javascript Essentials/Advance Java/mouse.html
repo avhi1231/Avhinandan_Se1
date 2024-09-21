@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Throttling Mouse Coordinates</title>
+    <style>
+        #mouseArea {
+            width: 400px;
+            height: 400px;
+            border: 2px solid black;
+            margin: 20px;
+            position: relative;
+        }
+        p {
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+
+<h2>Mouse Coordinates (Throttled)</h2>
+
+<div id="mouseArea">
+    Hover over this area to see mouse coordinates.
+</div>
+
+<p id="coordinates">Move your mouse inside the box...</p>
+
+<script>
+    // Throttle function
+    function throttle(func, limit) {
+        let lastFunc;
+        let lastRan;
+        return function(...args) {
+            const context = this;
+            if (!lastRan) {
+                func.apply(context, args);
+                lastRan = Date.now();
+            } else {
+                clearTimeout(lastFunc);
+                lastFunc = setTimeout(function() {
+                    if ((Date.now() - lastRan) >= limit) {
+                        func.apply(context, args);
+                        lastRan = Date.now();
+                    }
+                }, limit - (Date.now() - lastRan));
+            }
+        };
+    }
+
+    // Function to display mouse coordinates
+    function displayCoordinates(event) {
+        const x = event.clientX;
+        const y = event.clientY;
+        document.getElementById("coordinates").innerText = `X: ${x}, Y: ${y}`;
+    }
+
+    // Get the mouse area element
+    const mouseArea = document.getElementById("mouseArea");
+
+    // Attach mousemove event with throttling
+    mouseArea.addEventListener("mousemove", throttle(displayCoordinates, 100));  // 100ms throttle limit
+
+</script>
+
+</body>
+</html>

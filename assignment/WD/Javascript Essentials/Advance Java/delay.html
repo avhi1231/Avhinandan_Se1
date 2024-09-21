@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Debouncing</title>
+    <style>
+        input {
+            width: 300px;
+            padding: 10px;
+            margin: 20px;
+        }
+        p {
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+
+<h2>Debounced</h2>
+<input type="text" id="searchBox" placeholder="typing...">
+<p id="result"></p>
+
+<script>
+    // Debounce function
+    function debounce(func, delay) {
+        let timeoutId;
+        return function(...args) {
+            if (timeoutId) {
+                clearTimeout(timeoutId);  // Clear the previous timer
+            }
+            timeoutId = setTimeout(() => {
+                func.apply(this, args);  // Call the original function after the delay
+            }, delay);
+        };
+    }
+
+    // Example function to handle search
+    function search(query) {
+        document.getElementById("result").innerText = `Your typed "${query}"...`;
+        // Simulate API search logic here (e.g., fetch data)
+    }
+
+    // Get the input element and apply the debounced function
+    const searchBox = document.getElementById("searchBox");
+    searchBox.addEventListener('input', debounce(function(event) {
+        search(event.target.value);
+    }, 500));  // 500ms delay for debouncing
+
+</script>
+
+</body>
+</html>

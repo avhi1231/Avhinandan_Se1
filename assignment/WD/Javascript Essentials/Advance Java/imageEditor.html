@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Image Editor</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        .container {
+            text-align: center;
+        }
+
+        canvas {
+            border: 1px solid #ccc;
+            margin: 20px 0;
+        }
+
+        input[type="range"] {
+            width: 300px;
+        }
+
+        button {
+            padding: 10px 20px;
+            margin-top: 10px;
+            border: none;
+            background-color: #28a745;
+            color: white;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        button:hover {
+            background-color: #218838;
+        }
+
+        .filters {
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h2>Image Editor</h2>
+        <input type="file" id="upload" accept="image/*">
+        <canvas id="canvas"></canvas>
+        <div class="filters">
+            <label for="brightness">Brightness:</label>
+            <input type="range" id="brightness" min="-100" max="100" value="0">
+            <label for="contrast">Contrast:</label>
+            <input type="range" id="contrast" min="-100" max="100" value="0">
+            <label for="saturation">Saturation:</label>
+            <input type="range" id="saturation" min="-100" max="100" value="0">
+            <button onclick="resetFilters()">Reset Filters</button>
+        </div>
+    </div>
+
+    <script>
+        const upload = document.getElementById('upload');
+        const canvas = document.getElementById('canvas');
+        const ctx = canvas.getContext('2d');
+
+        let img = new Image();
+
+        upload.addEventListener('change', function() {
+            const file = upload.files[0];
+            const reader = new FileReader();
+
+            reader.onloadend = function() {
+                img.src = reader.result;
+                img.onload = function() {
+                    canvas.width = img.width;
+                    canvas.height = img.height;
+                    ctx.drawImage(img, 0, 0);
+                };
+            };
+
+            if (file) {
+                reader.readAsDataURL(file);
+            }
+        });
+
+        function applyFilters() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            ctx.filter = `
+                brightness(${document.getElementById('brightness').value + 100}%)
+                contrast(${document.getElementById('contrast').value + 100}%)
+                saturate(${document.getElementById('saturation').value + 100}%)
+            `;
+            ctx.drawImage(img, 0, 0);
+        }
+
+        document.getElementById('brightness').addEventListener('input', applyFilters);
+        document.getElementById('contrast').addEventListener('input', applyFilters);
+        document.getElementById('saturation').addEventListener('input', applyFilters);
+
+        function resetFilters() {
+            document.getElementById('brightness').value = 0;
+            document.getElementById('contrast').value = 0;
+            document.getElementById('saturation').value = 0;
+            applyFilters();
+        }
+    </script>
+
+</body>
+</html>

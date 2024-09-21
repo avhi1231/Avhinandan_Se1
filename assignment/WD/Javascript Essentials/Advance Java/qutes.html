@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Random Quote Generator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+        }
+        .quote-box {
+            margin: 20px auto;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            width: 50%;
+            background-color: #f9f9f9;
+            box-shadow: 0px 0px 10px #ccc;
+        }
+        .quote {
+            font-size: 24px;
+            font-style: italic;
+        }
+        .author {
+            margin-top: 10px;
+            font-size: 18px;
+            color: #555;
+        }
+        button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 18px;
+            cursor: pointer;
+            border: none;
+            background-color: #28a745;
+            color: white;
+            border-radius: 5px;
+        }
+        button:hover {
+            background-color: #218838;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="quote-box">
+        <p id="quote" class="quote">Click the button to get a random quote!</p>
+        <p id="author" class="author"></p>
+    </div>
+    <button onclick="generateRandomQuote()">New Quote</button>
+
+    <script>
+        const quotes = [
+            {
+                quote: "The best way to get started is to quit talking and begin doing.",
+                author: "Walt Disney"
+            },
+            {
+                quote: "Don't let yesterday take up too much of today.",
+                author: "Will Rogers"
+            },
+            {
+                quote: "You learn more from failure than from success. Don't let it stop you.",
+                author: "Unknown"
+            },
+            {
+                quote: "It's not whether you get knocked down, it's whether you get up.",
+                author: "Vince Lombardi"
+            },
+            {
+                quote: "If you're working on something that you really care about, you don't have to be pushed.",
+                author: "Steve Jobs"
+            },
+            {
+                quote: "People who are crazy enough to think they can change the world, are the ones who do.",
+                author: "Rob Siltanen"
+            },
+            {
+                quote: "Failure will never overtake me if my determination to succeed is strong enough.",
+                author: "Og Mandino"
+            }
+        ];
+
+        function generateRandomQuote() {
+            // Generate a random index based on the quotes array length
+            const randomIndex = Math.floor(Math.random() * quotes.length);
+
+            // Get the random quote and author
+            const randomQuote = quotes[randomIndex].quote;
+            const randomAuthor = quotes[randomIndex].author;
+
+            // Display the quote and author
+            document.getElementById('quote').textContent = randomQuote;
+            document.getElementById('author').textContent = "- " + randomAuthor;
+        }
+    </script>
+
+</body>
+</html>
