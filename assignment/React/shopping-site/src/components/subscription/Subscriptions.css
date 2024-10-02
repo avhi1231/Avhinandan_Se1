@@ -1,0 +1,128 @@
+/* Subscription Section Styles */
+.subscription-section {
+    background-color: #f7f7f7;
+    padding: 40px;
+    text-align: center;
+    border-radius: 15px;
+    max-width: 1200px;
+    margin: 40px auto;
+  }
+  
+  /* Container for text and image */
+  .subscription-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+  
+  /* Subscription text section */
+  .subscription-text {
+    flex: 1;
+    text-align: left;
+  }
+  
+  .subscription-text h1 {
+    font-size: 36px;
+    margin-bottom: 10px;
+  }
+  
+  .subscription-text p {
+    font-size: 18px;
+    margin-bottom: 20px;
+  }
+  
+  /* Subscription form styling */
+  .subscription-form {
+    display: flex;
+    align-items: center;
+  }
+  
+  .input-container {
+    position: relative;
+    display: inline-block;
+  }
+  
+  .envelope-icon {
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #999;
+  }
+  
+  input {
+    padding: 10px 20px 10px 40px;
+    border: 1px solid #ccc;
+    border-radius: 30px;
+    font-size: 16px;
+    margin-right: 10px;
+    width: 250px;
+  }
+  
+  .subscribe-btn {
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 30px;
+    font-size: 16px;
+    cursor: pointer;
+  }
+  
+  .subscribe-btn:hover {
+    background-color: #45a049;
+  }
+  
+  /* Subscription image */
+  .subscription-image img {
+    width: 350px;
+    border-radius: 15px;
+  }
+  
+  /* Featured Categories */
+  .featured-categories {
+    margin-top: 40px;
+  }
+  
+  .featured-categories h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+  }
+  
+  .categories-list {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .categories-list li {
+    background-color: #e0e0e0;
+    padding: 10px 20px;
+    border-radius: 20px;
+    font-size: 14px;
+  }
+  
+  .category-arrows {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 10px;
+  }
+  
+  .arrow-btn {
+    background-color: #4CAF50;
+    border: none;
+    padding: 10px;
+    border-radius: 50%;
+    cursor: pointer;
+    color: white;
+  }
+  
+  .arrow-btn:hover {
+    background-color: #45a049;
+  }
+  
