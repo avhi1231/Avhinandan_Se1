@@ -1,0 +1,22 @@
+.circle {
+  width: 100px;
+  height: 100px;
+  background-color: lightblue;
+  border: 5px solid #337ab7;
+  border-radius: 50%;
+  position: absolute;
+  pointer-events: none; /* Prevent the circle from interfering with mouse events */
+}
+
+body, html {
+  height: 100%;
+  margin: 0;
+  overflow: hidden;  /* Hide scrollbars */
+}
+
+.App {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
