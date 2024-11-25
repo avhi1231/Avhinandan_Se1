@@ -1,0 +1,119 @@
+ React – JSON-server and Firebase Real Time Database
+		THEORY EXERCISE
+
+1: What do you mean by RESTful web services?
+Ans:- RESTful web services are an architectural style for building scalable and maintainable web services. They are based on the REST (Representational State Transfer) architecture, which uses standard HTTP methods to perform operations on resources represented by URLs. RESTful services are stateless, meaning each request from a client to the server must contain all the information needed to understand and complete the request.
+
+2: What is Json-Server? How we use in React ?
+Ans:- JSON-Server is an npm(Node Package Manager) module that allows you to create a mock REST API using just a JSON file. It is highly useful for prototyping, testing, or building front-end applications without needing a complex back-end infrastructure. Data is transferred in JSON(JavaScript Object Notation) format between client and server using HTTP methods like GET, POST, PUT, PATCH, and DELETE.
+we will need Node.js and npm installed on your system, as they're both prerequisites for this setup. npm i json-server
+
+3: How do you fetch data from a Json-server API in React? Explain the role of fetch() or axios() in making API requests.
+Ans:- 1. Set Up JSON Server
+Assuming you have already set up JSON Server and it’s running, you can start it by navigating to the folder with your db.json file and running:
+
+bash
+Copy code
+json-server --watch db.json --port 5000
+This will start a server on http://localhost:5000.
+
+2. Install Axios (optional)
+You can use either fetch (built-in) or axios. If you want to use axios, install it first:
+
+bash
+Copy code
+npm install axios
+3. Fetch Data in React Component
+Example using fetch
+javascript
+Copy code
+import React, { useEffect, useState } from 'react';
+
+const App = () => {
+  const [data, setData] = useState([]);
+  
+  useEffect(() => {
+    fetch('http://localhost:5000/items') // replace 'items' with the relevant endpoint
+      .then(response => response.json())
+      .then(jsonData => setData(jsonData))
+      .catch(error => console.error('Error fetching data:', error));
+  }, []); // Empty dependency array ensures this runs only once
+
+  return (
+    <div>
+      <h1>Data from JSON Server</h1>
+      <ul>
+        {data.map((item) => (
+          <li key={item.id}>{item.name}</li> // Customize based on data structure
+        ))}
+      </ul>
+    </div>
+  );
+};
+
+export default App;
+
+Example using axios
+javascript
+Copy code
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
+
+const App = () => {
+  const [data, setData] = useState([]);
+  
+  useEffect(() => {
+    axios.get('http://localhost:5000/items')
+      .then(response => setData(response.data))
+      .catch(error => console.error('Error fetching data:', error));
+  }, []); // Empty dependency array ensures this runs only once
+
+  return (
+    <div>
+      <h1>Data from JSON Server</h1>
+      <ul>
+        {data.map((item) => (
+          <li key={item.id}>{item.name}</li> // Customize based on data structure
+        ))}
+      </ul>
+    </div>
+  );
+};
+
+export default App;
+
+4: What is Firebase? What features does Firebase offer?
+Ans:- Firebase is a platform developed by Google that provides a suite of tools to help developers build, improve, and scale mobile and web applications. Initially designed as a backend-as-a-service (BaaS), Firebase simplifies backend development by offering features like databases, authentication, analytics, and more. Firebase is especially popular for real-time applications and mobile development due to its extensive set of features and seamless integration with other Google products.
+Key Features Firebase Offers
+1. Firebase Authentication
+2. Firebase Realtime Database
+3. Cloud Firestore
+4. Firebase Hosting
+5. Firebase Cloud Functions
+6. Firebase Cloud Storage
+7. Firebase Analytics
+8. Firebase Remote Config
+9. Firebase Cloud Messaging (FCM)
+10. Firebase In-App Messaging
+11. Firebase Performance Monitoring
+12. Firebase Test Lab
+13. Firebase App Distribution
+
+5: Discuss the importance of handling errors and loading states when working with APIs in React
+Ans:- Handling errors and loading states when working with APIs in React is crucial for delivering a smooth, responsive, and user-friendly application experience. Here’s why they are essential and how they improve the user experience and app reliability:
+
+1. Improved User Experience
+2. Enhanced App Reliability
+3. Maintaining State Control
+4. Code Simplicity and Maintainability
+
+
+
+
+
+
+
+
+
+
+
