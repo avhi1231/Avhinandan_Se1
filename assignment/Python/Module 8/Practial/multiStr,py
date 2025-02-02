@@ -1,0 +1,20 @@
+# Program to write multiple strings into a file
+
+# Specify the file name
+file_name = "output.txt"
+
+# List of strings to write into the file
+lines_to_write = [
+    "Hello, this is the first line.\n",
+    "This is the second line of the file.\n",
+    "Python makes file handling easy!\n"
+]
+
+try:
+    # Open the file in write mode
+    with open(file_name, "w") as file:
+        # Write each string to the file
+        file.writelines(lines_to_write)
+    print(f"Strings have been written to '{file_name}'.")
+except Exception as e:
+    print(f"An error occurred: {e}")
