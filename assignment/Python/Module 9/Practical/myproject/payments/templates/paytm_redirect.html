@@ -1,0 +1,7 @@
+<form method="post" action="https://securegw-stage.paytm.in/order/process">
+    {% csrf_token %}
+    {% for key, value in paytm_params.items %}
+    <input type="hidden" name="{{ key }}" value="{{ value }}">
+    {% endfor %}
+    <button type="submit">Pay Now</button>
+</form>

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Item List</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        .item { margin-bottom: 10px; }
+        .edit, .delete { cursor: pointer; color: blue; margin-left: 10px; }
+    </style>
+</head>
+<body>
+    <h1>Item List</h1>
+    <form id="item-form">{% csrf_token %}
+        <input type="text" id="name" placeholder="Item Name" required>
+        <input type="text" id="description" placeholder="Description" required>
+        <button type="submit">Add Item</button>
+    </form>
+ 
+   
+    <div id="items-container">
+        {% for item in items %}
+        <div class="item" data-id="{{ item.id }}">
+            <span class="name">{{ item.name }}</span>
+            <span class="description">{{ item.description }}</span>
+
+
+            <span class="edit"><a href="update/{{item.id}}">Edit</a></span>
+            <span class="delete"><a href="delete/{{item.id}}">Delete</a></span>
+        </div>
+        {% endfor %}
+    </div>
+   
+   
+    <script>
+        function getCSRFToken() {
+            return document.querySelector('[name=csrfmiddlewaretoken]').value;
+        }
+   
+        $(document).ready(function() {
+            $('#item-form').submit(function(e) {
+                e.preventDefault();
+                let name = $('#name').val();
+                let description = $('#description').val();
+                let csrfToken = getCSRFToken();  // Get CSRF token
+   
+                $.ajax({
+                    url: "/create/",
+                    type: "POST",
+                    data: {name: name, description: description},
+                    headers: {"X-CSRFToken": csrfToken},  // Include CSRF token
+                    success: function(data) {
+                        $('#items-container').append(
+                            `<div class="item" data-id="${data.id}">
+                                <span class="name">${data.name}</span>
+                                <span class="description">${data.description}</span>
+                                <span class="edit">Edit</span>
+                                <span class="delete">Delete</span>
+                            </div>`
+                        );
+                        $('#name').val('');
+                        $('#description').val('');
+                    }
+                });
+            });
+        });
+        $(document).on('click', '.edit', function() {
+        let itemDiv = $(this).closest('.item');
+        let itemId = itemDiv.data('id');
+        let name = itemDiv.find('.name').text();
+        let description = itemDiv.find('.description').text();
+
+
+        let newName = prompt("Edit Name:", name);
+        let newDescription = prompt("Edit Description:", description);
+
+
+        if (newName !== null && newDescription !== null) {
+            let csrfToken = getCSRFToken();
+
+
+            $.ajax({
+                url: `/update/${itemId}/`,
+                type: "POST",
+                data: { name: newName, description: newDescription },
+                headers: { "X-CSRFToken": csrfToken },
+                success: function(data) {
+                    itemDiv.find('.name').text(data.name);
+                    itemDiv.find('.description').text(data.description);
+                },
+                error: function() {
+                    alert("Error updating item.");
+                }
+            });
+        }
+    });
+    </script>
+   
+</body>

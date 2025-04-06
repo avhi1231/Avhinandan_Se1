@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Quotes</title>
+</head>
+<body>
+    <h1>Famous Quotes</h1>
+    <ul>
+        {% for quote in quotes %}
+            <li>"{{ quote.text }}" - <strong>{{ quote.author }}</strong></li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
